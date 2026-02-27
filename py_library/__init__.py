@@ -12,7 +12,7 @@ memory traces separately.
 
 Quick Start
 -----------
-    >>> from trace_srs import TraceSRS, Card, Scheduler
+    >>> from trace_srs import TraceSRS, Card, Scheduler, Grade
     >>> 
     >>> # Create a scheduler with default parameters
     >>> scheduler = Scheduler()
