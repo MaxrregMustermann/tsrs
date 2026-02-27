@@ -9,7 +9,7 @@ TRACE-SRS (Two-Rate Adaptive Consolidation Engine) is a spaced repetition algori
 
 ## Installation
 
-Copy the `trace_srs/` folder to your project directory, then:
+Copy the `py_library/` folder to your project directory, then:
 
 ```python
 from trace_srs import TraceSRS, Card, Scheduler, Grade
@@ -20,7 +20,7 @@ from trace_srs import TraceSRS, Card, Scheduler, Grade
 ### High-Level API (Recommended)
 
 ```python
-from trace_srs import Scheduler, Card, Grade
+from py_library import Scheduler, Card, Grade
 
 # Create scheduler
 scheduler = Scheduler(target_R=0.90)  # 90% target retrievability
@@ -41,7 +41,7 @@ print(f"New interval: {card.interval:.1f} days")
 ### Low-Level API
 
 ```python
-from trace_srs import TraceSRS
+from py_library import TraceSRS
 
 srs = TraceSRS()
 
@@ -163,7 +163,7 @@ card = Card.from_state(state, card_id="my-card-001")
 Enum for review grades.
 
 ```python
-from trace_srs import Grade
+from py_library import Grade
 
 Grade.AGAIN   # 1 - Failed to recall
 Grade.HARD    # 2 - Recalled with difficulty
@@ -231,7 +231,7 @@ Serialize/deserialize card state.
 ## Complete Example: Flashcard App
 
 ```python
-from trace_srs import Scheduler, Card, Grade
+from py_library import Scheduler, Card, Grade
 from datetime import datetime, timedelta
 
 class FlashcardApp:
@@ -296,7 +296,7 @@ app.review_card("card-001", ok=True, grade=Grade.GOOD)
 The default parameters are optimized for the fsrs-vs-sm17 dataset. You can customize them:
 
 ```python
-from trace_srs import TraceSRS, DEFAULT_PARAMETERS
+from py_library import TraceSRS, DEFAULT_PARAMETERS
 
 params = DEFAULT_PARAMETERS.copy()
 params[16] = 4.0  # Increase slow trace ratio
