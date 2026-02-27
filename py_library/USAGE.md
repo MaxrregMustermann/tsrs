@@ -262,6 +262,7 @@ class FlashcardApp:
         
         # Update due date
         next_review = datetime.now() + timedelta(days=new_card.interval)
+        self.due_cards = [(cid, due) for cid, due in self.due_cards if cid != card_id]
         self.due_cards.append((card_id, next_review))
         
         print(f"Next review in {new_card.interval:.1f} days")
