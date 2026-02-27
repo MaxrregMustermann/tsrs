@@ -190,7 +190,7 @@ def parse_date(date_str):
     # Handle various date formats
     date_str = date_str.strip()
     # Replace non-breaking spaces and other weird chars
-    date_str = date_str.replace('\ufffd', '').replace('', '')
+    date_str = date_str.replace('\ufffd', '').replace('\xa0', ' ')
     
     formats = [
         "%b %d %Y %H:%M:%S",
@@ -210,8 +210,8 @@ def parse_date(date_str):
         if len(parts) >= 3:
             month_day_year = ' '.join(parts[:3])
             return datetime.strptime(month_day_year, "%b %d %Y")
-    except:
-        pass
+    except ValueError:
+        return None
     return None
 
 def load_csv_files(dataset_dir):
