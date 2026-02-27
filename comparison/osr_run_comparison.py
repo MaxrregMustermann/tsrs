@@ -4,11 +4,19 @@ TRACE-SRS vs FSRS-6 vs SM-2 on Real Dataset
 Runs comparison on the fsrs-vs-sm17 dataset from GitHub.
 """
 
-import math, random, numpy as np, warnings, csv, glob, os
-from datetime import datetime
-warnings.filterwarnings("ignore")
+import csv
+import glob
+import math
+import os
+import random
+import warnings
 
-random.seed(42); np.random.seed(42)
+import numpy as np
+from datetime import datetime
+warnings.filterwarnings("ignore", category=RuntimeWarning)  # Be specific
+
+random.seed(42)
+np.random.seed(42)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # SM-2
