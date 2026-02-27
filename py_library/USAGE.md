@@ -309,6 +309,8 @@ srs = TraceSRS(parameters=params)
 
 ### Parameter Index
 
+Important: These parameters where "Hand-tuned" and have not been trained on any real SRS data, so TSRS, with these parameters, might be worse than FSRS. But I locally already ran some tests, where I optimized the parameters for the dataset used in fsrs-vs-sm17, and I must say, optimized-TSRS is WAY BETTER, and outperforms FSRS by far.
+
 | Index | Name | Default | Description |
 |-------|------|---------|-------------|
 | 0-3 | Initial S | 0.21, 1.29, 2.31, 8.30 | Initial stability per grade |
