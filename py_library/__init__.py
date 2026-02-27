@@ -43,7 +43,7 @@ from .tsrs import (
     Grade,
 )
 
-__version__ = "yes"
+__version__ = "0.1.0"
 __author__ = "MaxrregMustermann"
 
 __all__ = [
