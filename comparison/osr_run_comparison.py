@@ -316,7 +316,7 @@ def simulate(dataset, AlgoCls):
 
 def get_bin(x, bins=10):
     """Simple equal-width binning with 1/bins intervals from 0 to 1."""
-    return np.round(x * bins) / bins
+    return min(1.0, max(0.0, np.round(x * bins) / bins))
 
 def universal_metric(pA, outcomes, p_ref, n_bins=10):
     """
