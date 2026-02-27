@@ -47,13 +47,10 @@ __version__ = "yes"
 __author__ = "MaxrregMustermann"
 
 __all__ = [
-    # Core algorithm
-    "TraceSRS",
-    "DEFAULT_PARAMETERS",
-    # High-level API
     "Card",
-    "Scheduler",
+    "DEFAULT_PARAMETERS",
     "Grade",
-    # Version info
+    "Scheduler",
+    "TraceSRS",
     "__version__",
 ]
