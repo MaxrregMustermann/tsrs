@@ -1,3 +1,7 @@
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 MaxrregMustermann
+#
+# TRACE-SRS - Two-Rate Adaptive Consolidation Engine for Spaced Repetition
 """
 TRACE-SRS: Two-Rate Adaptive Consolidation Engine for Spaced Repetition
 ========================================================================
