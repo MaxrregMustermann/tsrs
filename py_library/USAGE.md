@@ -280,7 +280,8 @@ class FlashcardApp:
     def _get_last_review_date(self, card_id: str) -> datetime:
         """Get last review date for a card."""
         # Implement based on your storage
-        pass
+        # Placeholder: In a real app, query your database
+        raise NotImplementedError("Override this method with your storage implementation")
 
 # Usage
 app = FlashcardApp()
