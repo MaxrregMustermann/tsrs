@@ -259,29 +259,32 @@ def load_csv_files(dataset_dir):
             prev_date = None
             
             for dt, row in reviews_with_dates:
-                # Calculate elapsed days
-                if prev_date:
-                    t = (dt - prev_date).total_seconds() / 86400.0
-                else:
-                    t = 0.0
-                prev_date = dt
+                try:
+                    # Calculate elapsed days
+                    if prev_date:
+                        t = (dt - prev_date).total_seconds() / 86400.0
+                    else:
+                        t = 0.0
+                    prev_date = dt
                 
-                # Get grade and outcome
-                grade = int(row['Grade'])
-                success = int(row['Success'])
-                outcome = 1 if success == 1 else 0
+                    # Get grade and outcome
+                    grade = int(row['Grade'])
+                    success = int(row['Success'])
+                    outcome = 1 if success == 1 else 0
                 
-                # Use SM17 R as reference
-                r_sm17 = float(row['R (SM17)'])
+                    # Use SM17 R as reference
+                    r_sm17 = float(row['R (SM17)'])
                 
-                card_reviews.append({
-                    "t": max(0.01, t),
-                    "outcome": outcome,
-                    "grade": grade,
-                    "r_ref": r_sm17,
-                    "user": user_name,
-                    "element": elem_no,
-                })
+                    card_reviews.append({
+                        "t": max(0.01, t),
+                        "outcome": outcome,
+                        "grade": grade,
+                        "r_ref": r_sm17,
+                        "user": user_name,
+                        "element": elem_no,
+                    })
+                except (ValueError, KeyError) as e:
+                    continue  # Skip malformed rows
             
             if len(card_reviews) >= 2:
                 all_cards.append(card_reviews)
