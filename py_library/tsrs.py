@@ -73,7 +73,8 @@ class TraceSRS:
         Args:
             parameters: List of 23 parameters. If None, uses default parameters.
         """
-        self.w = parameters if parameters is not None else DEFAULT_PARAMETERS.copy()
+        base = DEFAULT_PARAMETERS if parameters is None else parameters
+        self.w = list(base)
 
         # Card state variables
         self.S_f: Optional[float] = None  # Fast trace (hippocampal) stability
