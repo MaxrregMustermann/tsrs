@@ -170,7 +170,7 @@ class TraceSRS:
         """
         w = self.w
         hp = w[15] if g == 2 else 1.0  # Hard penalty
-        eb = w[16] if g == 4 else 1.0  # Easy bonus
+        eb = 1.0  # Easy bonus
 
         base_sinc = (math.exp(w[8]) * (11 - D) * pow(max(0.01, S_f), -w[9]) *
                      (math.exp(w[10] * (1 - R)) - 1) * hp * eb + 1)
@@ -190,7 +190,7 @@ class TraceSRS:
         """
         w = self.w
         hp = w[15] if g == 2 else 1.0
-        eb = w[16] if g == 4 else 1.0
+        eb = 1.0
 
         # Slow trace has weaker S decay and R dependency
         base_sinc = (math.exp(w[8]) * (11 - D) * pow(max(0.01, S_s), -w[9] * 0.7) *
