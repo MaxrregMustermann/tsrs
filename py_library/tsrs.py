@@ -515,13 +515,13 @@ class Scheduler:
         if ok:
             new_interval = srs.predict_interval(target_R=self.target_R)
             new_retrievability = srs.predict_R(new_interval)
-            new_reviews = card.reviews + 1
             new_lapses = card.lapses
         else:
             new_interval = 1.0  # Reset to 1 day on lapse
             new_retrievability = srs.predict_R(1.0)
-            new_reviews = card.reviews
             new_lapses = card.lapses + 1
+
+        new_reviews = card.reviews + 1
 
         # Create new card with updated state
         new_state = srs.get_state()
