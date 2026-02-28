@@ -72,7 +72,7 @@ class FSRS6:
 
     def _S_recall(self, S, D, R, g):
         hp = W6[15] if g==2 else 1.0
-        eb = 1.0
+        eb = W6[16] if g==4 else 1.0
         sinc = (math.exp(W6[8]) * (11-D) * pow(S, -W6[9]) *
                 (math.exp(W6[10]*(1-R))-1) * hp * eb + 1)
         return max(S, S * sinc)
