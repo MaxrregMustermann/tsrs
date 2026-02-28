@@ -36,10 +36,10 @@ Contributions are welcome. Please feel free to report bugs, suggest features, or
 
 ## License
 
-MIT License - see LICENSE file for details.
+MIT License - see [LICENSE](https://github.com/MaxrregMustermann/tsrs/blob/main/LICENSE) file for details.
 
 ## Acknowledgments
 
 - Inspired by the Memory Chain Model from cognitive neuroscience research
 - Built upon insights from FSRS, SuperMemo, and spaced repetition research
-- Benchmark dataset from open-spaced-repetition/fsrs-vs-sm17
+- Benchmark dataset from [open-spaced-repetition/fsrs-vs-sm17](https://github.com/open-spaced-repetition/fsrs-vs-sm17)
