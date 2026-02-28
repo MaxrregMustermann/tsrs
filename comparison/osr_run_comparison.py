@@ -72,7 +72,7 @@ class FSRS6:
 
     def _S_recall(self, S, D, R, g):
         hp = W6[15] if g==2 else 1.0
-        eb = W6[16] if g==4 else 1.0
+        eb = 1.0
         sinc = (math.exp(W6[8]) * (11-D) * pow(S, -W6[9]) *
                 (math.exp(W6[10]*(1-R))-1) * hp * eb + 1)
         return max(S, S * sinc)
@@ -81,8 +81,8 @@ class FSRS6:
         sf = W6[11]*pow(D,-W6[12])*(pow(S+1,W6[13])-1)*math.exp(W6[14]*(1-R))
         return min(sf, S)
 
-    def update(self, ok, t):
-        g = 3 if ok else 1
+    def update(self, ok, t, grade=None):
+        g = grade if grade in [1, 2, 3, 4] else (3 if ok else 1)
         self.n += 1
         if self.S is None:
             self.S = W6[g-1]
@@ -143,7 +143,7 @@ class TRACE:
     def _S_fast_recall(self, S_f, D, R, g):
         w = self.w
         hp = w[15] if g==2 else 1.0
-        eb = w[16] if g==4 else 1.0
+        eb = 1.0
         base_sinc = (math.exp(w[8]) * (11-D) * pow(max(0.01, S_f), -w[9]) *
                      (math.exp(w[10]*(1-R))-1) * hp * eb + 1)
         surprise_amp = math.exp(w[21] * max(0.0, 1.0-R))
@@ -153,7 +153,7 @@ class TRACE:
     def _S_slow_recall(self, S_f, S_s, D, R, g):
         w = self.w
         hp = w[15] if g==2 else 1.0
-        eb = w[16] if g==4 else 1.0
+        eb = 1.0
         base_sinc = (math.exp(w[8]) * (11-D) * pow(max(0.01, S_s), -w[9]*0.7) *
                      (math.exp(w[10]*(1-R)*0.8)-1) * hp * eb + 1)
         slow_sinc = base_sinc * w[22]
@@ -167,8 +167,8 @@ class TRACE:
     def _S_slow_lapse(self, S_s, R):
         return max(0.1, S_s * self.w[18])
 
-    def update(self, ok, t):
-        g = 3 if ok else 1
+    def update(self, ok, t, grade=None):
+        g = grade if grade in [1, 2, 3, 4] else (3 if ok else 1)
         R_raw = self._R_point(t)
         self.n += 1
 
@@ -275,7 +275,8 @@ def load_csv_files(dataset_dir):
                 prev_date = dt
                 
                 # Get grade and outcome
-                grade = int(row['Grade'])
+                grade_raw = int(row['Grade'])
+                grade = {1: 1, 2: 1, 3: 2, 4: 3, 5: 4}.get(grade_raw, 3)
                 success = int(row['Success'])
                 outcome = 1 if success == 1 else 0
                 
@@ -311,7 +312,11 @@ def simulate(dataset, AlgoCls):
             ok = rev["outcome"]
             pred = algo.predict_R(t)
             pairs.append((pred, ok, rev))
-            algo.update(ok, t)
+            import inspect
+            if 'grade' in inspect.signature(algo.update).parameters:
+                algo.update(ok, t, grade=rev["grade"])
+            else:
+                algo.update(ok, t)
     return pairs
 
 def get_bin(x, bins=10):
