@@ -93,7 +93,7 @@ TRACE_W = [
     0.212, 1.2931, 2.3065, 8.2956,
     6.4133, 0.8334, 3.0194, 0.001,
     1.8722, 0.1666, 0.796, 1.4835,
-    0.0614, 0.2629, 1.6483, 0.6014,
+    0.0614, 0.2629, 1.6483, 1.65,
     3.2, 0.088, 0.45, 6.0, 0.40, 0.32, 1.35,
 ]
 
@@ -134,20 +134,18 @@ class TRACE:
 
     def _S_fast_recall(self, S_f, D, R, g):
         w = self.w
-        hp = w[15] if g==2 else 1.0
-        eb = 1.0
+        eb = w[15] if g==4 else 1.0
         base_sinc = (math.exp(w[8]) * (11-D) * pow(max(0.01, S_f), -w[9]) *
-                     (math.exp(w[10]*(1-R))-1) * hp * eb + 1)
+                     (math.exp(w[10]*(1-R))-1) * eb + 1)
         surprise_amp = math.exp(w[21] * max(0.0, 1.0-R))
         sinc = base_sinc * (1.0 + (surprise_amp-1.0) * (1.0-R))
         return max(S_f, S_f * sinc)
 
     def _S_slow_recall(self, S_f, S_s, D, R, g):
         w = self.w
-        hp = w[15] if g==2 else 1.0
-        eb = 1.0
+        eb = w[15] if g==4 else 1.0
         base_sinc = (math.exp(w[8]) * (11-D) * pow(max(0.01, S_s), -w[9]*0.7) *
-                     (math.exp(w[10]*(1-R)*0.8)-1) * hp * eb + 1)
+                     (math.exp(w[10]*(1-R)*0.8)-1) * eb + 1)
         slow_sinc = base_sinc * w[22]
         new_S_s = max(S_s, S_s * slow_sinc)
         return min(new_S_s, S_f * w[16] * 5.0)
