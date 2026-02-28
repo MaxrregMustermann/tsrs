@@ -21,9 +21,9 @@ Running simulations...
 
   Algorithm        Self-UM   Cross-UM    vs FSRS-6  UM(SM-17 ref)
   ────────────── ───────── ────────── ──────────── ──────────────
-  SM-2              50.42%     39.52%      +12.97pp        33.90%
-  FSRS-6            29.90%     26.55%      baseline        22.67%
-  TRACE-SRS         18.97%     18.52%       -8.03pp        18.40%
+  SM-2              50.42%     39.00%      +11.67pp        33.90%
+  FSRS-6            30.70%     27.34%      baseline        23.50%
+  TRACE-SRS         19.18%     18.67%       -8.66pp        18.60%
 
 ────────────────────────────────────────────────────────────────────────
   TRADITIONAL METRICS
@@ -31,16 +31,16 @@ Running simulations...
 
   Metric               SM-2     FSRS-6  TRACE-SRS     TRACE vs F6
   ────────────── ────────── ────────── ──────────  ──────────────
-  Log Loss ↓         1.9741     0.6331     0.4775   -0.1556 (better)
-  RMSE(bins) ↓       0.5045     0.2994     0.1907   -0.1087 (better)
-  AUC ↑              0.4670     0.5502     0.5524   +0.0022 (better)
-  Brier ↓            0.3671     0.2018     0.1480   -0.0538 (better)
-  ECE ↓              0.3965     0.2287     0.1804   -0.0483 (better)
+  Log Loss ↓         1.9741     0.6456     0.4789   -0.1667 (better)
+  RMSE(bins) ↓       0.5045     0.3074     0.1928   -0.1146 (better)
+  AUC ↑              0.4670     0.5647     0.5601   -0.0046 (worse)
+  Brier ↓            0.3671     0.2063     0.1487   -0.0576 (better)
+  ECE ↓              0.3965     0.2368     0.1828   -0.0540 (better)
 
 ────────────────────────────────────────────────────────────────────────
   SUMMARY
 ────────────────────────────────────────────────────────────────────────
 
-  TRACE-SRS wins 5/5 metrics vs FSRS-6
-  UM improvement: +8.03pp
-  Log Loss improvement: +24.6%
+  TRACE-SRS wins 4/5 metrics vs FSRS-6
+  UM improvement: +8.66pp
+  Log Loss improvement: +25.8%
