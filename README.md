@@ -18,7 +18,7 @@ The dual-trace architecture explains why relearning is faster than initial learn
 
 See `py_library/USAGE.md`
 
-# Benchmarks
+## Benchmarks
 
 | Metric | FSRS-6 | TRACE-SRS | Improvement |
 |--------|--------|-----------|-------------|
@@ -30,15 +30,15 @@ See `py_library/USAGE.md`
 
 **According to `comparison/osr_run_comparison.py`**
 
-# Contributing
+## Contributing
 
 Contributions are welcome. Please feel free to report bugs, suggest features, or submit pull requests.
 
-# License
+## License
 
 MIT License - see LICENSE file for details.
 
-# Acknowledgments
+## Acknowledgments
 
 - Inspired by the Memory Chain Model from cognitive neuroscience research
 - Built upon insights from FSRS, SuperMemo, and spaced repetition research
