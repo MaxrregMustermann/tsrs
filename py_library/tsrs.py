@@ -21,8 +21,8 @@ DEFAULT_PARAMETERS = [
     6.4133, 0.8334, 3.0194, 0.001,
     # w8-w11: SInc base
     1.8722, 0.1666, 0.796, 1.4835,
-    # w12-w15: grade/lapse modifiers
-    0.0614, 0.2629, 1.6483, 0.6014,
+    # w12-w15: grade/lapse modifiers w15=easy bonus
+    0.0614, 0.2629, 1.6483, 1.65,
     # w16: fast-to-slow ratio (S_s_init = S_f_init * w16)
     3.2,
     # w17: consolidation speed (w_f decay per successful review)
@@ -169,11 +169,10 @@ class TraceSRS:
         - Low R recalls produce larger stability increases
         """
         w = self.w
-        hp = w[15] if g == 2 else 1.0  # Hard penalty
-        eb = 1.0  # Easy bonus
+        eb = w[15] if g == 4 else 1.0  # Easy bonus
 
         base_sinc = (math.exp(w[8]) * (11 - D) * pow(max(0.01, S_f), -w[9]) *
-                     (math.exp(w[10] * (1 - R)) - 1) * hp * eb + 1)
+                     (math.exp(w[10] * (1 - R)) - 1) * eb + 1)
 
         surprise_amp = math.exp(w[21] * max(0.0, 1.0 - R))
         sinc = base_sinc * (1.0 + (surprise_amp - 1.0) * (1.0 - R))
@@ -189,12 +188,11 @@ class TraceSRS:
         initial learning.
         """
         w = self.w
-        hp = w[15] if g == 2 else 1.0
-        eb = 1.0
+        eb = w[15] if g == 4 else 1.0
 
         # Slow trace has weaker S decay and R dependency
         base_sinc = (math.exp(w[8]) * (11 - D) * pow(max(0.01, S_s), -w[9] * 0.7) *
-                     (math.exp(w[10] * (1 - R) * 0.8) - 1) * hp * eb + 1)
+                     (math.exp(w[10] * (1 - R) * 0.8) - 1) * eb + 1)
 
         slow_sinc = base_sinc * w[22]  # Slow trace consolidation multiplier
         new_S_s = max(S_s, S_s * slow_sinc)
