@@ -45,4 +45,4 @@ MIT License - see [LICENSE](https://github.com/MaxrregMustermann/tsrs/blob/main/
 - Benchmark dataset from [open-spaced-repetition/fsrs-vs-sm17](https://github.com/open-spaced-repetition/fsrs-vs-sm17)
 
 # DISCLAIMER
-**THIS PROJECT IS COMPLETELY AI GENERATED AND IS CURRENTLY UNMAINTAINED. Feel free to fork this project(please someone do)! The Parameters could be HEAVILY Optimized and be way more accurate when trained on e.g. https://huggingface.co/datasets/open-spaced-repetition/anki-revlogs-10k.
+**THIS PROJECT IS COMPLETELY AI GENERATED AND IS CURRENTLY UNMAINTAINED. Feel free to fork this project(please someone do)! The Parameters could be HEAVILY Optimized and be way more accurate when trained on e.g. https://huggingface.co/datasets/open-spaced-repetition/anki-revlogs-10k.**
