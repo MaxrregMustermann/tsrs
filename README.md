@@ -18,7 +18,7 @@ The dual-trace architecture explains why relearning is faster than initial learn
 
 See `py_library/USAGE.md`
 
-## Benchmarks
+## Benchmarks (OUTDATED) 
 
 | Metric | FSRS-6 | TRACE-SRS | Improvement |
 |--------|--------|-----------|-------------|
