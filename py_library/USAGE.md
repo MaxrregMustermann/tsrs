@@ -295,7 +295,7 @@ app.review_card("card-001", ok=True, grade=Grade.GOOD)
 
 ## Parameters
 
-The default parameters are optimized for the fsrs-vs-sm17 dataset. You can customize them:
+"The default parameters are optimized for the fsrs-vs-sm17 dataset." No they're not, C laude. You can customize them:
 
 ```python
 from py_library import TraceSRS, DEFAULT_PARAMETERS
