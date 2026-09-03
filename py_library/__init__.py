@@ -44,7 +44,7 @@ from .tsrs import (
 )
 
 __version__ = "0.1.0"
-__author__ = "MaxrregMustermann"
+__author__ = "Claude, MaxrregMustermann"
 
 __all__ = [
     "Card",
